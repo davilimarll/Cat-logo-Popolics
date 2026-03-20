@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { CATEGORIES, CATEGORY_META, FUNKO_STATUSES } from "@/lib/constants";
@@ -84,6 +85,11 @@ export function FunkoForm({ funko }: { funko?: Funko }) {
       <div>
         <label className="mb-1 block text-sm">Imagem</label>
         <input name="imagem" type="file" accept="image/*" className="w-full rounded-xl border border-brand-border bg-black/40 px-4 py-2" />
+        {funko?.image_url && (
+          <div className="relative mt-3 h-32 w-32 overflow-hidden rounded-xl">
+            <Image src={funko.image_url} alt={funko.nome} fill className="object-cover" />
+          </div>
+        )}
         {funko?.image_url && <img src={funko.image_url} alt={funko.nome} className="mt-3 h-32 rounded-xl object-cover" />}
       </div>
       {error && <p className="text-sm text-red-400">{error}</p>}
