@@ -26,6 +26,9 @@ export async function createClient() {
           } catch {
             // Ignora em contextos somente leitura (ex.: render server-side).
           }
+          cookiesToSet.forEach(({ name, value, options }) => {
+            cookieStore.set(name, value, options);
+          });
         }
       }
     }

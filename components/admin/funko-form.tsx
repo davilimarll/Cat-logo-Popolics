@@ -90,6 +90,7 @@ export function FunkoForm({ funko }: { funko?: Funko }) {
             <Image src={funko.image_url} alt={funko.nome} fill className="object-cover" />
           </div>
         )}
+        {funko?.image_url && <img src={funko.image_url} alt={funko.nome} className="mt-3 h-32 rounded-xl object-cover" />}
       </div>
       {error && <p className="text-sm text-red-400">{error}</p>}
       {success && <p className="text-sm text-emerald-400">{success}</p>}
